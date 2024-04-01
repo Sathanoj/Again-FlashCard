@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Salve Data</title>
+</head>
+<body>
+    <h1>Save FlashCard</h1>
+    <form id="formulario" method="post">
+        <input type="text" id="put1" name="word" placeholder="palavra"/>
+        <input type="text" id="put2" name="wordtranslate" placeholder="tradução"/>
+        <button type="submit" id = "saveButton">Salvar</button>
+        <button type="reset">clean</button>
+        <hr>
+    </form>
+    <a href="index.html"><button>Back to Main</button></a>
+    <a href="showList.html"><button>Show all FlashCards</button></a>
+</body>
+<script>
+    const forms = document.getElementById("formulario")
+    const apiflashcard = "http://localhost:8080/flashcard/add"
+
+    forms.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const data = {
+            word: forms.querySelector('input[name="word"]').value,
+            wordtranslate: forms.querySelector('input[name="wordtranslate"]').value,
+        }
+
+        const jsonData = JSON.stringify(data);
+
+        fetch(apiflashcard, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: jsonData,
+        })
+    })
+</script>
+</html>

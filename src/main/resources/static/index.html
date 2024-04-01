@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LL About English</title>
+</head>
+<body>
+
+    <h1>First Test</h1>
+    <hr>
+
+    <h3 id="dados"> let's play</h3>
+    <input type="text" id="translatebox" placeholder=""/>
+    <button id="click" onclick="LoadData()">FLIP</button>
+    <br><hr>
+    <a href="postData.html"><button>save more FlashCard</button></a>
+    <a href="showList.html"><button>Show all FlashCards</button></a>
+</body>
+<script>
+    const apiflashcard = "http://localhost:8080/flashcard"
+    let h3dados = document.getElementById("dados")
+    let runlist = 0
+    function LoadData() {
+        fetch(apiflashcard)
+            .then(response => response.json())
+            .then(data => {
+            let tohtml = "<h3>";
+            tohtml += data[runlist].wordtranslate;
+            runlist += 1
+            tohtml += "</h3>";
+            h3dados.innerHTML = tohtml;
+            if(runlist == data.length) {runlist = 0}
+        });
+
+    }
+
+    function postData() {
+
+    }
+</script>
+</html>
