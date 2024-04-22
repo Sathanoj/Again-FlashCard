@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
+@CrossOrigin(origins = "http://localhost:5173/")
 @RestController
 @RequestMapping("/flashcard")
 public class FlashCardController {
@@ -35,7 +35,7 @@ public class FlashCardController {
         findfc.setWordtranslate(fc.getWordtranslate());
         return fcr.save(findfc);
     }
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public void deleteFC(@PathVariable Long id) {
         fcr.deleteById(id);
     }
