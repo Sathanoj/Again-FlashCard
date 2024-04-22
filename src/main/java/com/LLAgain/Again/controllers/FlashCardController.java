@@ -2,6 +2,7 @@ package com.LLAgain.Again.controllers;
 
 import com.LLAgain.Again.entity.FlashCard;
 import com.LLAgain.Again.interfaces.FlashCardRepository;
+import com.LLAgain.Again.service.FlashCardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,31 +13,28 @@ import java.util.List;
 @RequestMapping("/flashcard")
 public class FlashCardController {
     @Autowired
-    FlashCardRepository fcr;
+    FlashCardService flashCardService;
 
     @GetMapping
     public List<FlashCard> find() {
-        return fcr.findAll();
+        return flashCardService.getAllFlashCard();
     }
     @GetMapping("/{id}")
     public FlashCard findID(@PathVariable Long id) {
-        return fcr.findById(id).get();
+        return flashCardService.findById(id);
     }
 
     @PostMapping("/add")
-    public FlashCard save(@RequestBody FlashCard fc) {
-        return fcr.save(fc);
+    public FlashCard save(@RequestBody FlashCard flashCard) {
+        return flashCardService.createFlashCard(flashCard);
     }
 
     @PutMapping("/{id}")
-    public FlashCard updateFC(@RequestBody FlashCard fc, @PathVariable Long id) {
-        FlashCard findfc = fcr.findById(id).get();
-        findfc.setWord(fc.getWord());
-        findfc.setWordtranslate(fc.getWordtranslate());
-        return fcr.save(findfc);
+    public FlashCard updateFC(@RequestBody FlashCard flashCard, @PathVariable Long id) {
+        return flashCardService.updateFlashCard(flashCard, id);
     }
     @DeleteMapping("/delete/{id}")
     public void deleteFC(@PathVariable Long id) {
-        fcr.deleteById(id);
+        flashCardService.deleteFlashCard(id);
     }
 }
