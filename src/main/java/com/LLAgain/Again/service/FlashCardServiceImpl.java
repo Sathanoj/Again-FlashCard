@@ -2,13 +2,14 @@ package com.LLAgain.Again.service;
 
 import com.LLAgain.Again.entity.FlashCard;
 import com.LLAgain.Again.interfaces.FlashCardRepository;
+import com.LLAgain.Again.interfaces.FlashCardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class FlashCardServiceImpl implements  FlashCardService{
+public class FlashCardServiceImpl implements FlashCardService {
 
     @Autowired
     FlashCardRepository flashCardRepository;

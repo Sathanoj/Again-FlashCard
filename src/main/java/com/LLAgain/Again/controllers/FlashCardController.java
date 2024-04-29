@@ -1,8 +1,7 @@
 package com.LLAgain.Again.controllers;
 
 import com.LLAgain.Again.entity.FlashCard;
-import com.LLAgain.Again.interfaces.FlashCardRepository;
-import com.LLAgain.Again.service.FlashCardService;
+import com.LLAgain.Again.interfaces.FlashCardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

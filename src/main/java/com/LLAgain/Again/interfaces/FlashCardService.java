@@ -1,4 +1,4 @@
-package com.LLAgain.Again.service;
+package com.LLAgain.Again.interfaces;
 
 import com.LLAgain.Again.entity.FlashCard;
 
