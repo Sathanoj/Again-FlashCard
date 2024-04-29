@@ -14,9 +14,9 @@ public class FlashCardController {
     @Autowired
     FlashCardService flashCardService;
 
-    @GetMapping
-    public List<FlashCard> find() {
-        return flashCardService.getAllFlashCard();
+    @GetMapping("/box/{id}")
+    public List<FlashCard> find(@PathVariable Long id) {
+        return flashCardService.getFlashCardsByPaperBox(id);
     }
     @GetMapping("/{id}")
     public FlashCard findID(@PathVariable Long id) {

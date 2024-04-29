@@ -8,7 +8,7 @@ public interface FlashCardService {
 
     FlashCard createFlashCard(FlashCard flashCard);
 
-    List<FlashCard> getAllFlashCard();
+    List<FlashCard> getFlashCardsByPaperBox(Long id);
 
     FlashCard findById(Long id);
 
