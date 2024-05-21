@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/box")
-public class MainController {
+public class BoxController {
 
     @Autowired
     FlashCardService flashCardService;
@@ -32,10 +32,4 @@ public class MainController {
     public PaperBox createBox(@RequestBody PaperBox paperBox) {
         return paperBoxService.createPaperBox(paperBox);
     }
-
-    @GetMapping("/addfc/{name}")
-    public FlashCard addFlashCard(@PathVariable String name, @RequestBody FlashCard flashCard) {
-        return paperBoxService.addFlashCardinBox(name, flashCard);
-    }
-
 }

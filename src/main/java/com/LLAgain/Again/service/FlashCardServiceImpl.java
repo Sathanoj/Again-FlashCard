@@ -20,11 +20,6 @@ public class FlashCardServiceImpl implements FlashCardService {
     PaperBoxRepository paperBoxRepository;
 
     @Override
-    public FlashCard createFlashCard(FlashCard flashCard) {
-        return flashCardRepository.save(flashCard);
-    }
-
-    @Override
     public List<FlashCard> getFlashCardsByPaperBox(Long paperBoxId) {
         Optional<PaperBox> findPaperBox = paperBoxRepository.findById(paperBoxId);
         if(findPaperBox.isPresent()) {

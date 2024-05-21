@@ -16,8 +16,6 @@ public class PaperBoxServiceImpl implements PaperBoxService {
 
     @Autowired
     PaperBoxRepository paperBoxRepository;
-    @Autowired
-    FlashCardRepository flashCardRepository;
 
     @Override
     public PaperBox createPaperBox(PaperBox paperBox) {
