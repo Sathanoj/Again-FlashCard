@@ -1,12 +1,10 @@
 package com.LLAgain.Again.controllers;
 
-import com.LLAgain.Again.entity.FlashCard;
-import com.LLAgain.Again.interfaces.FlashCardService;
-import com.LLAgain.Again.interfaces.PaperBoxService;
+import com.LLAgain.Again.model.entity.FlashCard;
+import com.LLAgain.Again.service.interfaces.FlashCardService;
+import com.LLAgain.Again.service.interfaces.PaperBoxService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:5173/")
 @RestController

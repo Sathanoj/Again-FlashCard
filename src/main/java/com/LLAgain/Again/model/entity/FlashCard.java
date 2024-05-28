@@ -1,4 +1,4 @@
-package com.LLAgain.Again.entity;
+package com.LLAgain.Again.model.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;

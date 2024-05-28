@@ -1,10 +1,9 @@
 package com.LLAgain.Again.service;
 
-import com.LLAgain.Again.entity.FlashCard;
-import com.LLAgain.Again.entity.PaperBox;
-import com.LLAgain.Again.interfaces.FlashCardRepository;
-import com.LLAgain.Again.interfaces.PaperBoxRepository;
-import com.LLAgain.Again.interfaces.PaperBoxService;
+import com.LLAgain.Again.model.entity.FlashCard;
+import com.LLAgain.Again.model.entity.PaperBox;
+import com.LLAgain.Again.service.interfaces.PaperBoxRepository;
+import com.LLAgain.Again.service.interfaces.PaperBoxService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,7 +30,7 @@ public class PaperBoxServiceImpl implements PaperBoxService {
             paperBoxRepository.save(paperBox);
             return flashCard;
         }else {
-            throw new RuntimeException("PaperBox não encontrado com o nome: " + name);
+            throw new RuntimeException("PaperBox not found with this name: " + name);
         }
     }
 

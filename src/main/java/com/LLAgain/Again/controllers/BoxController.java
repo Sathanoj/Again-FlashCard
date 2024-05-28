@@ -1,9 +1,9 @@
 package com.LLAgain.Again.controllers;
 
-import com.LLAgain.Again.entity.FlashCard;
-import com.LLAgain.Again.entity.PaperBox;
-import com.LLAgain.Again.interfaces.FlashCardService;
-import com.LLAgain.Again.interfaces.PaperBoxService;
+import com.LLAgain.Again.model.entity.FlashCard;
+import com.LLAgain.Again.model.entity.PaperBox;
+import com.LLAgain.Again.service.interfaces.FlashCardService;
+import com.LLAgain.Again.service.interfaces.PaperBoxService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,13 +23,13 @@ public class BoxController {
         return flashCardService.getFlashCardsByPaperBox(id);
     }
 
-    @GetMapping("/all")
-    public List<PaperBox> allBox(){
-        return paperBoxService.getAllPaperBox();
-    }
-
     @PostMapping("/add")
     public PaperBox createBox(@RequestBody PaperBox paperBox) {
         return paperBoxService.createPaperBox(paperBox);
+    }
+
+    @GetMapping("/all")
+    public List<PaperBox> allBox(){
+        return paperBoxService.getAllPaperBox();
     }
 }

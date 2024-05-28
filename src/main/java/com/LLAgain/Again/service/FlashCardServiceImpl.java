@@ -1,10 +1,10 @@
 package com.LLAgain.Again.service;
 
-import com.LLAgain.Again.entity.FlashCard;
-import com.LLAgain.Again.entity.PaperBox;
-import com.LLAgain.Again.interfaces.FlashCardRepository;
-import com.LLAgain.Again.interfaces.FlashCardService;
-import com.LLAgain.Again.interfaces.PaperBoxRepository;
+import com.LLAgain.Again.model.entity.FlashCard;
+import com.LLAgain.Again.model.entity.PaperBox;
+import com.LLAgain.Again.service.interfaces.FlashCardRepository;
+import com.LLAgain.Again.service.interfaces.FlashCardService;
+import com.LLAgain.Again.service.interfaces.PaperBoxRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +25,7 @@ public class FlashCardServiceImpl implements FlashCardService {
         if(findPaperBox.isPresent()) {
             return findPaperBox.get().getFlashCards();
         } else {
-            throw new RuntimeException("PaperBox não encontrado com o id: " + paperBoxId);
+            throw new RuntimeException("PaperBox not found with this ID: " + paperBoxId);
         }
     }
 
