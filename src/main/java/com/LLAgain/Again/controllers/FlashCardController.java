@@ -16,9 +16,9 @@ public class FlashCardController {
     PaperBoxService paperBoxService;
 
 
-    @PostMapping("/addFc/{name}")
-    public FlashCard addFlashCard(@PathVariable String name, @RequestBody FlashCard flashCard) {
-        return paperBoxService.addFlashCardinBox(name, flashCard);
+    @PostMapping("/addFc/{box_name}")
+    public FlashCard addFlashCard(@PathVariable String box_name, @RequestBody FlashCard flashCard) {
+        return paperBoxService.addFlashCardinBox(box_name, flashCard);
     }
 
     @PutMapping("/{id}")

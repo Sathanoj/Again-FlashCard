@@ -18,9 +18,14 @@ public class BoxController {
     @Autowired
     PaperBoxService paperBoxService;
 
-    @GetMapping("/{id}")
+    @GetMapping("/byId/{id}")
     public List<FlashCard> getFlashCardsByPaperBox(@PathVariable Long id) {
         return flashCardService.getFlashCardsByPaperBox(id);
+    }
+
+    @GetMapping("/byName/{boxName}")
+    public List<FlashCard> getPaperBoxByName(@PathVariable String boxName) {
+        return paperBoxService.boxByName(boxName);
     }
 
     @PostMapping("/add")

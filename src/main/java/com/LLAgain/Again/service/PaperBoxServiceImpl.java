@@ -6,7 +6,6 @@ import com.LLAgain.Again.service.interfaces.PaperBoxRepository;
 import com.LLAgain.Again.service.interfaces.PaperBoxService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -22,21 +21,33 @@ public class PaperBoxServiceImpl implements PaperBoxService {
     }
 
     @Override
-    public FlashCard addFlashCardinBox(String name, FlashCard flashCard) {
+    public FlashCard addFlashCardinBox(String box_name, FlashCard flashCard) {
 
-        Optional<PaperBox> paperBoxOptional = paperBoxRepository.findByName(name);
+        Optional<PaperBox> paperBoxOptional = paperBoxRepository.findByName(box_name);
         if(paperBoxOptional.isPresent()) {
             PaperBox paperBox = paperBoxOptional.get();
             paperBox.getFlashCards().add(flashCard);
             paperBoxRepository.save(paperBox);
             return flashCard;
         }else {
-            throw new RuntimeException("PaperBox not found with this name: " + name);
+            throw new RuntimeException("PaperBox not found for add this FlashCard: " + box_name);
         }
     }
 
     @Override
     public List<PaperBox> getAllPaperBox() {
         return paperBoxRepository.findAll();
+    }
+
+    @Override
+    public List<FlashCard> boxByName(String boxName) {
+        Optional<PaperBox> getBox = paperBoxRepository.findByName(boxName);
+        if (getBox.isPresent()) {
+            PaperBox paperBox = getBox.get();
+            return paperBox.getFlashCards();
+        }else {
+            System.out.println("BORA PORRA NÃO TA FUNCIONANDO");
+            throw new RuntimeException("PaperBox not found with this name: " + boxName);
+        }
     }
 }
