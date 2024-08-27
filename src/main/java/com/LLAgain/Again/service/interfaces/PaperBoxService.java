@@ -10,7 +10,8 @@ public interface PaperBoxService {
     PaperBox createPaperBox(PaperBox paperBox);
     FlashCard addFlashCardinBox(String box_name, FlashCard flashCard);
     List<PaperBox> getAllPaperBox();
-    List<FlashCard> boxByName(String boxName);
-
+    List<FlashCard> getBoxByName(String boxName);
+    PaperBox updateBoxName(String newBoxName, PaperBox paperBox);
+    void delPaperBoxById(Long id);
 
 }

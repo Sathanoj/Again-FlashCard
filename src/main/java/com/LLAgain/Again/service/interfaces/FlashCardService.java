@@ -10,4 +10,5 @@ public interface FlashCardService {
     FlashCard findById(Long id);
     FlashCard updateFlashCard(FlashCard flashCard, Long id);
     void deleteFlashCard(Long id);
+
 }

@@ -25,12 +25,22 @@ public class BoxController {
 
     @GetMapping("/byName/{boxName}")
     public List<FlashCard> getPaperBoxByName(@PathVariable String boxName) {
-        return paperBoxService.boxByName(boxName);
+        return paperBoxService.getBoxByName(boxName);
+    }
+
+    @PutMapping("/upBox/{findBox}")
+    public PaperBox updateBox(@PathVariable String findBox, @RequestBody PaperBox newPaper) {
+        return paperBoxService.updateBoxName(findBox, newPaper);
     }
 
     @PostMapping("/add")
     public PaperBox createBox(@RequestBody PaperBox paperBox) {
         return paperBoxService.createPaperBox(paperBox);
+    }
+
+    @DeleteMapping("/delBox/{id}")
+    public void deleteBoxById(@PathVariable Long id) {
+        paperBoxService.delPaperBoxById(id);
     }
 
     @GetMapping("/all")

@@ -40,14 +40,31 @@ public class PaperBoxServiceImpl implements PaperBoxService {
     }
 
     @Override
-    public List<FlashCard> boxByName(String boxName) {
+    public List<FlashCard> getBoxByName(String boxName) {
         Optional<PaperBox> getBox = paperBoxRepository.findByName(boxName);
         if (getBox.isPresent()) {
             PaperBox paperBox = getBox.get();
             return paperBox.getFlashCards();
         }else {
-            System.out.println("BORA PORRA NÃO TA FUNCIONANDO");
             throw new RuntimeException("PaperBox not found with this name: " + boxName);
         }
+    }
+
+    @Override
+    public PaperBox updateBoxName(String findBox, PaperBox paperBox) {
+        Optional<PaperBox> findPaperBox = paperBoxRepository.findByName(findBox);
+        if (findPaperBox.isPresent()) {
+            PaperBox paperBoxUpdated = findPaperBox.get();
+            paperBoxUpdated.setName(paperBox.getName());
+            paperBoxRepository.save(paperBoxUpdated);
+            return paperBoxUpdated;
+        } else {
+            throw new RuntimeException("PaperBox not found with this name: " + findBox);
+        }
+    }
+
+    @Override
+    public void delPaperBoxById(Long id) {
+        paperBoxRepository.deleteById(id);
     }
 }
