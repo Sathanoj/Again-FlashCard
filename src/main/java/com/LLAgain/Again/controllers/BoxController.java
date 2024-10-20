@@ -28,6 +28,11 @@ public class BoxController {
         return paperBoxService.getBoxByName(boxName);
     }
 
+    @GetMapping("/byName/{boxName}/{id}")
+    public FlashCard getOnlyOneFlashcard(@PathVariable String boxName, @PathVariable Long id) {
+       return flashCardService.getFlashCardById(boxName, id);
+    }
+
     @PutMapping("/upBox/{findBox}")
     public PaperBox updateBox(@PathVariable String findBox, @RequestBody PaperBox newPaper) {
         return paperBoxService.updateBoxName(findBox, newPaper);

@@ -12,6 +12,7 @@ public class FlashCard {
     private Long id;
     private String word;
     private String wordtranslate;
+    
 
 //    public void addPaperBox(PaperBox paperBox) {
 //

@@ -35,6 +35,16 @@ public class FlashCardServiceImpl implements FlashCardService {
     }
 
     @Override
+    public FlashCard getFlashCardById(String boxName, Long id) {
+        int longToInt = id.intValue();
+        Optional<PaperBox> findPaperBox = paperBoxRepository.findByName(boxName);
+        if(findPaperBox.isPresent()) {
+            return findPaperBox.get().getFlashCards().get(longToInt);
+        }
+        return null;
+    }
+
+    @Override
     public FlashCard updateFlashCard(FlashCard flashCard, Long id) {
         FlashCard findFlashCard = findById(id);
         findFlashCard.setWord(flashCard.getWord());
@@ -46,4 +56,6 @@ public class FlashCardServiceImpl implements FlashCardService {
     public void deleteFlashCard(Long id) {
         flashCardRepository.deleteById(id);
     }
+
+
 }
